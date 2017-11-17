@@ -37,5 +37,9 @@ cygwin:
     - http://cygwin.mirrors.pair.com/
   packages:
     - cygwin
+  prefix:
+    ''
+  nsswitch:
+    {}
 
 #### CYGWIN/DEFAULTS.YAML ends here.

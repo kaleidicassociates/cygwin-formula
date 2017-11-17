@@ -40,4 +40,11 @@ cygwin:
                )|yaml_encode }}
     - cwd: {{ salt.environ.get('TMP')|yaml_encode }}
 
+  file.recurse:
+    - name: {{ cygwin_settings.prefix|yaml_encode }}
+    - source: salt://cygwin/files
+    - template: jinja
+    - require:
+        - cmd: cygwin
+
 #### CYGWIN/INIT.SLS ends here.

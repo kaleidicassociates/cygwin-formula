@@ -44,6 +44,9 @@ cygwin:
     - mosh
     - tcsh
     - xorg-server
+  nsswitch:
+    db_home: /cygdrive/u        # user's home dir mapped to U:\
+    db_shell: unix              # loginShell attribute in AD
 
 #### Local variables:
 #### mode: yaml
