@@ -32,15 +32,15 @@
 
 {%- import_yaml "cygwin/defaults.yaml" as default_settings %}
 
-{%- set distro_map = salt.grains.filter_by({
+{%- set distro_map = salt['grains.filter_by']({
       'Windows': {
         'installer':
-          salt.grains.filter_by({
+          salt['grains.filter_by']({
             'AMD64': 'https://www.cygwin.com/setup-x86_64.exe',
             'x86':   'https://www.cygwin.com/setup-x86.exe',
           }, grain='cpuarch'),
         'prefix':
-          salt.grains.filter_by({
+          salt['grains.filter_by']({
             'AMD64': 'C:\cygwin64',
             'x86':   'C:\cygwin',
           }, grain='cpuarch'),
@@ -48,7 +48,7 @@
 
 {%- do default_settings.cygwin.update(distro_map) %}
 
-{%- set cygwin_settings = salt.pillar.get(
+{%- set cygwin_settings = salt['pillar.get'](
       'cygwin',
       default=default_settings.cygwin,
       merge=True

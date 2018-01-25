@@ -38,7 +38,7 @@ cygwin:
                  cygwin_settings.mirrors|join(' -s '),
                  cygwin_settings.packages|join(','),
                )|yaml_encode }}
-    - cwd: {{ salt.environ.get('TMP')|yaml_encode }}
+    - cwd: {{ salt['environ.get']('TMP')|yaml_encode }}
 
   file.recurse:
     - name: {{ cygwin_settings.prefix|yaml_encode }}
